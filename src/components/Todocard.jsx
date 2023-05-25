@@ -51,13 +51,17 @@ const TodoCard = ({ todo }) => {
           {todo.content}
         </p>
       )}
-      {!todo.completed && (
-        <div className="flex gap-1 items-center">
+      
+        <div className="flex gap-3 items-center">
+          <div className="flex gap-3 items-center">
           <input type="checkbox" name="completed" checked={todo.completed} onChange={() => handleToggle(todo.id)} />
           <label className="font-semibold" htmlFor="completed">
             Completed
           </label>
+          </div>
           <div></div>
+          {!todo.completed && (
+          <div className="flex gap-3 items-center">
           {editing ? (
             <button className="btn" onClick={() => handleSave(todo.id)}>
               <GiCheckMark />
@@ -70,8 +74,9 @@ const TodoCard = ({ todo }) => {
           <button className="btn" onClick={() => handleRemove(todo.id)}>
             <FaTrash />
           </button>
+          </div>
+          )}
         </div>
-      )}
     </div>
   );
 };
